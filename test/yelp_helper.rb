@@ -14,18 +14,18 @@ module YelpHelper
                      "set in your shell environment under 'YWSID'.")
       @yws_id = ENV['YWSID']
     when API_V2
-      assert_not_nil(ENV['CONSUMER_KEY'], "Missing CONSUMER_KEY.  Obtain from http://www.yelp.com/developer and " +
+      assert_not_nil(ENV['YELP_CONSUMER_KEY'], "Missing YELP_CONSUMER_KEY.  Obtain from http://www.yelp.com/developer and " +
                      "set in your shell environment under 'CONSUMER_KEY'.")
-      @consumer_key = ENV['CONSUMER_KEY']
-      assert_not_nil(ENV['CONSUMER_SECRET'], "Missing CONSUMER_SECRET.  Obtain from http://www.yelp.com/developer and " +
+      @consumer_key = ENV['YELP_CONSUMER_KEY']
+      assert_not_nil(ENV['YELP_CONSUMER_SECRET'], "Missing YELP_CONSUMER_SECRET.  Obtain from http://www.yelp.com/developer and " +
                      "set in your shell environment under 'CONSUMER_SECRET'.")
-      @consumer_secret = ENV['CONSUMER_SECRET']
-      assert_not_nil(ENV['TOKEN'], "Missing TOKEN.  Obtain from http://www.yelp.com/developer and " +
+      @consumer_secret = ENV['YELP_CONSUMER_SECRET']
+      assert_not_nil(ENV['YELP_TOKEN'], "Missing YELP_TOKEN.  Obtain from http://www.yelp.com/developer and " +
                      "set in your shell environment under 'TOKEN'.")
-      @token = ENV['TOKEN']
-      assert_not_nil(ENV['TOKEN_SECRET'], "Missing TOKEN_SECRET.  Obtain from http://www.yelp.com/developer and " +
+      @token = ENV['YELP_TOKEN']
+      assert_not_nil(ENV['YELP_TOKEN_SECRET'], "Missing YELP_TOKEN_SECRET.  Obtain from http://www.yelp.com/developer and " +
                      "set in your shell environment under 'TOKEN_SECRET'.")
-      @token_secret = ENV['TOKEN_SECRET']
+      @token_secret = ENV['YELP_TOKEN_SECRET']
     else
       assert_false("No api version specified in test case; cannot continue")
     end
