@@ -1,0 +1,4 @@
+.bundle
+bin
+*.DS_Store
+.rspec

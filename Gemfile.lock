@@ -1,0 +1,35 @@
+PATH
+  remote: .
+  specs:
+    yelpster (1.1.2)
+      json (>= 1.1.1)
+      oauth (>= 0.4.5)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.2.2)
+    json (1.7.7)
+    oauth (0.4.7)
+    rake (10.0.4)
+    rdoc (4.0.1)
+      json (~> 1.4)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json
+  oauth (~> 0.4.5)
+  rake
+  rdoc
+  rspec (~> 2.13)
+  yelpster!
