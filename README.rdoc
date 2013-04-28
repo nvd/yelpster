@@ -1,13 +1,4 @@
-This is an expansion of the yelp api ruby gem written by Walter Korman. The gem has been extended to support version 2 of the yelp api. V2 supports business details retrieval via yelp id as well as searches for businesses using geo-point, bounding box or address/location. It also uses OAuth for authorization of requests.
-
-NOTE: Use of this code will break legacy code. You need to update all existing references to Yelp::Request::.. with Yelp::V1::Request::... Check out sample usage section for more information.
-
-The source for the original gem can be found here: http://github.com/shaper/yelp
-Following is the updated extract of the readme file. 
-
---------------------------------------------------------------------------------
-
-== yelp
+== Yelpster
 
 A Ruby object-oriented interface to the local business content available
 on Yelp at http://www.yelp.com.  Functionality is provided to perform
@@ -25,22 +16,6 @@ The RubyForge project is hosted at http://rubyforge.org/projects/yelpster.  This
 
 The latest source code is at http://github.com/nvd/yelpster.
 
-== About
-
-Everybody loves Yelp! For those seeking burritos in the Mission District of
-San Francisco, it's easy to feel awash in a sea of taquerias with little to go
-on for decision-making other than whether the rice has peas in it (generally a
-negatory data point) or how long the line happens to be around lunchtime.
-
-Worry no longer! Yelp is here.
-
-Why should you use this library rather than writing directly to their API, or rolling your own?  A few reasons that come to mind:
-
-* we've done a variety of mini-legwork from which you, Yelp and our fellow netizens will benefit, such as making sure we inform the Yelp server that we support gzipped data over the wire to save on bandwidth.
-* we have rudimentary tests, whereas your implementation doesn't (since you haven't even written it yet).
-* we return responses (by default, configurable) as JSON data converted into a Ruby hash and appropriate data types where applicable.
-* (subjective but we know we're right) -- we think our API is a nicer layer for Ruby developers to work with than the bare-bones REST API that Yelp provides.
-
 == Requirements
 
 You must have a Yelp Web Service ID (YWSID) if you're using v1 of the api or Consumer Key, Consumer Secret, Token and a Token Secret for version 2. These are available at http://www.yelp.com/developers/getting_started/api_access.
@@ -48,26 +23,20 @@ You must have a Yelp Web Service ID (YWSID) if you're using v1 of the api or Con
 You must conform to the Yelp Branding Requirements when making use of content
 retrieved via their API, documented at http://www.yelp.com/developers/getting_started/api_branding.
 
-For tests to execute successfully you must have the YWSID (for v1) or CONSUMER_KEY, CONSUMER_SECRET, TOKEN and TOKEN_SECRET(for v2) set in your environment via (shell-dependent, bash example provided):
+For tests to execute successfully you must have the YWSID (for v1) or YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, YELP_TOKEN and YELP_TOKEN_SECRET(for v2) set in your environment via (shell-dependent, bash example provided):
 
  % export YWSID='YOUR_ID_HERE'
 
 or
 
- % export CONSUMER_KEY='YOUR_CONSUMER_KEY_HERE'
- % export CONSUMER_SECRET='YOUR_CONSUMER_SECRET_HERE'
- % export TOKEN='YOUR_TOKEN_HERE'
- % export TOKEN_SECRET='YOUR_TOKEN_SECRET_HERE'
+ % export YELP_CONSUMER_KEY='YOUR_CONSUMER_KEY_HERE'
+ % export YELP_CONSUMER_SECRET='YOUR_CONSUMER_SECRET_HERE'
+ % export YELP_PTOKEN='YOUR_TOKEN_HERE'
+ % export YELPP_TOKEN_SECRET='YOUR_TOKEN_SECRET_HERE'
 
 == Installing
 
-NOTE: At the moment, this source (and support for yelp api v2) has not been incorporated into the original gem. You can install the original gem following the instructions below
-
-Install +rubygems+ if you don't already have it.  See http://rubyforge.org/projects/rubygems/.
-
-Then install the +yelp+ gem by executing:
-
- % gem install yelp
+ % gem install yelpster
 
 == Usage
 

@@ -1,4 +1,11 @@
-== YELP_20111013_1_1_1
+== YELPSTER_20130429_1_1_2
+* [naveed] switched testing and deployment libraries
+
+* [naveed] Add deals_filter in business search
+
+* [naveed] Remove claimed_filter in business search
+
+== YELPSTER_20111013_1_1_1
 * [naveed] 
 	- updated Rakefile (removed hoe; added echoe for building)
 	- Renamed 'yelp.rb' to 'yelpster.rb'

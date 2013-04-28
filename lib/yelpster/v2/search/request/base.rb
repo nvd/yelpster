@@ -32,9 +32,8 @@ class Yelp
     			# integer specifying the search radius in meters
      			attr_reader :radius_filter
 			
-    			# boolean representing if business has claimed location
-    			# not implemented by yelp as of 13-8-2011
-    			attr_reader :claimed_filter
+          # boolean representing if business has a deal available
+          attr_reader :deals_filter
     			#---------------------------------------------------------------
 
     			#--------------------------- Locale Params ---------------------
@@ -56,8 +55,7 @@ class Yelp
     							:sort 	=> sort,
     							:category_filter => category_filter,
     							:radius_filter 	=> radius_filter,
-    							:claimed_filter => claimed_filter,
-
+									:deals_filter => deals_filter,
     							:cc 	=> cc,
     							:lang 	=> lang)
     			end
