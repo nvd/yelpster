@@ -46,7 +46,7 @@ class Yelp
   			  def build_location_string
   				# per the Yelp documentation, the location string is to be built
   				# as some combination of "address, city, state, or zip".
-  				[ @address, @city, @state, @zipcode ].compact.join(" ")
+  				[ @address, @city, @state, @zipcode ].compact.join(',')
   			  end
         end
       end
