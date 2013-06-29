@@ -1,6 +1,6 @@
 require 'yelpster/v1/review/request/base'
 
-class Yelp
+module Yelp
   module V1
     module Review
       module Request

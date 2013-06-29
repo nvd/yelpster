@@ -1,7 +1,7 @@
 require 'yelpster/record'
 require 'oauth'
 
-class Yelp
+module Yelp
   module V2
     class Request < Yelp::Record
       # specifies whether the response content should be transmitted

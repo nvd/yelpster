@@ -1,6 +1,6 @@
 require 'yelpster/v2/request'
 
-class Yelp
+module Yelp
   module V2
     module Business
       module Request

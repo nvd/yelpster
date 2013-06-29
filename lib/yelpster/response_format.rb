@@ -1,6 +1,6 @@
 require 'yelpster/record'
 
-class Yelp
+module Yelp
   # Describes the available response formats when querying the Yelp web
   # service for results.
   #

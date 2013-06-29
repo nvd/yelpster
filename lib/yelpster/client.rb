@@ -4,7 +4,7 @@ require 'rubygems'
 require 'json'
 require 'yaml'
 
-class Yelp
+module Yelp
   # Provides access to the Yelp search facilities as documented at:
   #
   # http://www.yelp.com/developers/documentation

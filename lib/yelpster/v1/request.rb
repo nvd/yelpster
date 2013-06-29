@@ -2,7 +2,7 @@ require 'yelpster/record'
 require 'open-uri'
 require 'zlib'
 
-class Yelp
+module Yelp
   module V1
     class Request < Yelp::Record
       # specifies whether the response content should be transmitted

@@ -1,4 +1,4 @@
-class Yelp
+module Yelp
   # General-purpose record that allows passing a hash with parameters
   # to populate object attributes defined via methods like
   # +attr_reader+ or +attr_accessor+.

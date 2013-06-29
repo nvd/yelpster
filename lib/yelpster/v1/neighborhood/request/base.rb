@@ -1,6 +1,6 @@
 require 'yelpster/v1/request'
 
-class Yelp
+module Yelp
   module V1
     module Neighborhood
       module Request
