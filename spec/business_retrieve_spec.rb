@@ -7,10 +7,10 @@ module Yelp::V2::Business::Request
     subject do
       client.search(Id.new(
         :yelp_business_id => 'pjb2WMwa0AfK3L-dWimO8w',
-        :consumer_key => @consumer_key,
-        :consumer_secret => @consumer_secret,
-        :token => @token,
-        :token_secret => @token_secret))
+        :consumer_key => Credentials.consumer_key,
+        :consumer_secret => Credentials.consumer_secret,
+        :token => Credentials.token,
+        :token_secret => Credentials.token_secret))
     end
 
     it 'returns a valid business hash' do

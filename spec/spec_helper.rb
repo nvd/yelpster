@@ -12,20 +12,15 @@ module AdditionalSpecHelpers
 
     case api_ver
     when API_V1
-      ENV['YWSID'].should_not be_nil, "Missing YWSID. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YWSID'."
-      @yws_id = ENV['YWSID']
+      Credentials.yws_id.should_not be_nil, "Missing YWSID. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YWSID'."
     when API_V2
-      ENV['YELP_CONSUMER_KEY'].should_not be_nil, "Missing YELP_CONSUMER_KEY. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_KEY'."
-      @consumer_key = ENV['YELP_CONSUMER_KEY']
+      Credentials.consumer_key.should_not be_nil, "Missing YELP_CONSUMER_KEY. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_KEY'."
 
-      ENV['YELP_CONSUMER_SECRET'].should_not be_nil, "Missing YELP_CONSUMER_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_SECRET'."
-      @consumer_secret = ENV['YELP_CONSUMER_SECRET']
+      Credentials.consumer_secret.should_not be_nil, "Missing YELP_CONSUMER_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_SECRET'."
 
-      ENV['YELP_TOKEN'].should_not be_nil, "Missing YELP_TOKEN. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN'."
-      @token = ENV['YELP_TOKEN']
+      Credentials.token.should_not be_nil, "Missing YELP_TOKEN. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN'."
 
-      ENV['YELP_TOKEN_SECRET'].should_not be_nil, "Missing YELP_TOKEN_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN_SECRET'."
-      @token_secret = ENV['YELP_TOKEN_SECRET']
+      Credentials.token_secret.should_not be_nil, "Missing YELP_TOKEN_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN_SECRET'."
     else
       assert_false('No api version specified in test case; cannot continue')
     end
@@ -33,6 +28,30 @@ module AdditionalSpecHelpers
     client
   end
 
+end
+
+module Credentials
+  class << self
+    def yws_id
+      @yws_id ||= ENV['YWSID']
+    end
+
+    def consumer_key
+      @consumer_key ||= ENV['YELP_CONSUMER_KEY']
+    end
+
+    def consumer_secret
+      @consumer_secret ||= ENV['YELP_CONSUMER_SECRET']
+    end
+
+    def token
+      @token ||= ENV['YELP_TOKEN']
+    end
+
+    def token_secret
+      @token_secret ||= ENV['YELP_TOKEN_SECRET']
+    end
+  end
 end
 
 #TODO: These matchers are quite lame and need to meaningfully test

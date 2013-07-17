@@ -12,7 +12,7 @@ module Yelp::V1::Review::Request
           :top_left_latitude => 37.9,
           :top_left_longitude => -122.5,
           :term => 'yelp',
-          :yws_id => @yws_id)
+          :yws_id => Credentials.yws_id)
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -24,7 +24,7 @@ module Yelp::V1::Review::Request
           :longitude => -122.399797,
           :radius => 2,
           :term => 'yelp',
-          :yws_id => @yws_id)
+          :yws_id => Credentials.yws_id)
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -37,7 +37,7 @@ module Yelp::V1::Review::Request
           :state => 'CA',
           :radius => 2,
           :term => 'cream puffs',
-          :yws_id => @yws_id)
+          :yws_id => Credentials.yws_id)
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -50,7 +50,7 @@ module Yelp::V1::Review::Request
           :longitude => -122.399797,
           :radius => 5,
           :term => 'yelp',
-          :yws_id => @yws_id)
+          :yws_id => Credentials.yws_id)
         response = client.search(request)
 
         # perform the same search focusing only on playgrounds
@@ -60,7 +60,7 @@ module Yelp::V1::Review::Request
           :radius => 5,
           :term => 'yelp',
           :category => 'playgrounds',
-          :yws_id => @yws_id)
+          :yws_id => Credentials.yws_id)
         narrowed_response = client.search(narrowed_request)
 
         # make sure we got less for the second
@@ -95,7 +95,7 @@ module Yelp::V1::Review::Request
       params = {
         :city => 'San Francisco',
         :state => 'CA',
-        :yws_id => @yws_id,
+        :yws_id => Credentials.yws_id,
         :category => 'donuts'
       }
       request = Location.new(params)
@@ -139,7 +139,7 @@ module Yelp::V1::Review::Request
         :city => 'San Francisco',
         :state => 'CA',
         :term => 'gordo',
-        :yws_id => @yws_id
+        :yws_id => Credentials.yws_id
       }
       Location.new(default_params.merge(options))
     end

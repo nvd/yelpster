@@ -8,7 +8,7 @@ module Yelp::V1::Neighborhood::Request
       it 'returns neighbourhoods at point' do
         request = GeoPoint.new(:latitude => 37.782093,
                                :longitude => -122.483230,
-                               :yws_id => @yws_id)
+                               :yws_id => Credentials.yws_id)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['neighborhoods'].first['name']).to eq('Outer Richmond')
@@ -21,7 +21,7 @@ module Yelp::V1::Neighborhood::Request
                                :city => 'San Francisco',
                                :state => 'CA',
                                :zipcode => 94121,
-                               :yws_id => @yws_id)
+                               :yws_id => Credentials.yws_id)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['neighborhoods'].first['name']).to eq('Outer Richmond')

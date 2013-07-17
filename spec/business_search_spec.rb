@@ -26,10 +26,10 @@ module Yelp::V2::Search::Request
           :ne_latitude     =>  37.788022,
           :ne_longitude    => -122.399797,
           :term            => 'yelp',
-          :consumer_key    => @consumer_key,
-          :consumer_secret => @consumer_secret,
-          :token           => @token,
-          :token_secret    => @token_secret)
+          :consumer_key    => Credentials.consumer_key,
+          :consumer_secret => Credentials.consumer_secret,
+          :token           => Credentials.token,
+          :token_secret    => Credentials.token_secret)
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -38,10 +38,10 @@ module Yelp::V2::Search::Request
       it 'returns business at geo point' do
         request = GeoPoint.new(:latitude        => latitude,
                                :longitude       => longitude,
-                               :consumer_key    => @consumer_key,
-                               :consumer_secret => @consumer_secret,
-                               :token           => @token,
-                               :token_secret    => @token_secret)
+                               :consumer_key    => Credentials.consumer_key,
+                               :consumer_secret => Credentials.consumer_secret,
+                               :token           => Credentials.token,
+                               :token_secret    => Credentials.token_secret)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['businesses'].first['location']).to eq(location)
@@ -54,10 +54,10 @@ module Yelp::V2::Search::Request
                                :city            => 'San Francisco',
                                :state           => 'CA',
                                :zipcode         => 94121,
-                               :consumer_key    => @consumer_key,
-                               :consumer_secret => @consumer_secret,
-                               :token           => @token,
-                               :token_secret    => @token_secret)
+                               :consumer_key    => Credentials.consumer_key,
+                               :consumer_secret => Credentials.consumer_secret,
+                               :token           => Credentials.token,
+                               :token_secret    => Credentials.token_secret)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['businesses'].first['location']['postal_code']).to eq('94121')
