@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Yelp::V1::Neighborhood::Request
   describe 'Neighborhood Search' do
-    before(:all) { Yelp.configure(yws_id: Credentials.yws_id) }
+    before(:all) { Yelp.configure(:yws_id => Credentials.yws_id) }
     let(:client) { Yelp::Base.client }
 
     describe 'by GeoPoint' do

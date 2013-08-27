@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Yelp::V1::Phone::Request
   describe 'Search by phone number' do
-    before(:all) { Yelp.configure(yws_id: Credentials.yws_id) }
+    before(:all) { Yelp.configure(:yws_id => Credentials.yws_id) }
     let(:client) { Yelp::Base.client }
 
     it 'returns business with specified phone number' do
