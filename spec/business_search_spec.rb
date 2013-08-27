@@ -2,9 +2,13 @@ require 'spec_helper'
 
 module Yelp::V2::Search::Request
   describe 'Business Search' do
-    let!(:client)   { create_client(AdditionalSpecHelpers::API_V2) }
-    let(:latitude)  { 37.782303 }
-    let(:longitude) { -122.484101 }
+    before(:all) { Yelp.configure(:consumer_key => Credentials.consumer_key,
+                                  :consumer_secret => Credentials.consumer_secret,
+                                  :token => Credentials.token,
+                                  :token_secret => Credentials.token_secret) }
+    let(:client) { Yelp::Base.client }
+    let(:latitude)  { 37.7821868 }
+    let(:longitude) { -122.4841149 }
     let(:location)  { {
       'cross_streets'   => '24th Ave & 25th Ave',
       'city'            => 'San Francisco', 
@@ -25,11 +29,7 @@ module Yelp::V2::Search::Request
           :sw_longitude    => -122.5,
           :ne_latitude     =>  37.788022,
           :ne_longitude    => -122.399797,
-          :term            => 'yelp',
-          :consumer_key    => Credentials.consumer_key,
-          :consumer_secret => Credentials.consumer_secret,
-          :token           => Credentials.token,
-          :token_secret    => Credentials.token_secret)
+          :term            => 'yelp')
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -37,11 +37,7 @@ module Yelp::V2::Search::Request
     describe 'by GeoPoint' do
       it 'returns business at geo point' do
         request = GeoPoint.new(:latitude        => latitude,
-                               :longitude       => longitude,
-                               :consumer_key    => Credentials.consumer_key,
-                               :consumer_secret => Credentials.consumer_secret,
-                               :token           => Credentials.token,
-                               :token_secret    => Credentials.token_secret)
+                               :longitude       => longitude)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['businesses'].first['location']).to eq(location)
@@ -53,11 +49,7 @@ module Yelp::V2::Search::Request
         request = Location.new(:address         => '2308 Clement St',
                                :city            => 'San Francisco',
                                :state           => 'CA',
-                               :zipcode         => 94121,
-                               :consumer_key    => Credentials.consumer_key,
-                               :consumer_secret => Credentials.consumer_secret,
-                               :token           => Credentials.token,
-                               :token_secret    => Credentials.token_secret)
+                               :zipcode         => 94121)
         response = client.search(request)
         expect(response).to be_valid_response_hash
         expect(response['businesses'].first['location']['postal_code']).to eq('94121')

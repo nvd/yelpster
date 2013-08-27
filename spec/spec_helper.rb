@@ -12,15 +12,15 @@ module AdditionalSpecHelpers
 
     case api_ver
     when API_V1
-      Credentials.yws_id.should_not be_nil, "Missing YWSID. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YWSID'."
+      expect(Credentials.yws_id).to_not be_nil, "Missing YWSID. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YWSID'."
     when API_V2
-      Credentials.consumer_key.should_not be_nil, "Missing YELP_CONSUMER_KEY. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_KEY'."
+      expect(Credentials.consumer_key).to_not be_nil, "Missing YELP_CONSUMER_KEY. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_KEY'."
 
-      Credentials.consumer_secret.should_not be_nil, "Missing YELP_CONSUMER_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_SECRET'."
+      expect(Credentials.consumer_secret).to_not be_nil, "Missing YELP_CONSUMER_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_CONSUMER_SECRET'."
 
-      Credentials.token.should_not be_nil, "Missing YELP_TOKEN. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN'."
+      expect(Credentials.token).to_not be_nil, "Missing YELP_TOKEN. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN'."
 
-      Credentials.token_secret.should_not be_nil, "Missing YELP_TOKEN_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN_SECRET'."
+      expect(Credentials.token_secret).to_not be_nil, "Missing YELP_TOKEN_SECRET. Obtain from http://www.yelp.com/developers and set in your shell environment under 'YELP_TOKEN_SECRET'."
     else
       assert_false('No api version specified in test case; cannot continue')
     end

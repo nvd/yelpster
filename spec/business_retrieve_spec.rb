@@ -2,7 +2,11 @@ require 'spec_helper'
 
 module Yelp::V2::Business::Request
   describe Id do
-    let!(:client) { create_client(AdditionalSpecHelpers::API_V2) }
+    before(:all) { Yelp.configure(:consumer_key => Credentials.consumer_key,
+                                  :consumer_secret => Credentials.consumer_secret,
+                                  :token => Credentials.token,
+                                  :token_secret => Credentials.token_secret) }
+    let(:client) { Yelp::Base.client }
 
     subject do
       client.search(Id.new(

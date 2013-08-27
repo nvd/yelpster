@@ -2,7 +2,8 @@ require 'spec_helper'
 
 module Yelp::V1::Review::Request
   describe 'Review Search' do
-    let!(:client) { create_client(AdditionalSpecHelpers::API_V1) }
+    before(:all) { Yelp.configure(yws_id: Credentials.yws_id) }
+    let(:client) { Yelp::Base.client }
 
     describe 'by Bounding Box' do
       it 'returns reviews in box' do
@@ -11,8 +12,7 @@ module Yelp::V1::Review::Request
           :bottom_right_longitude => -122.399797,
           :top_left_latitude => 37.9,
           :top_left_longitude => -122.5,
-          :term => 'yelp',
-          :yws_id => Credentials.yws_id)
+          :term => 'yelp')
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -23,8 +23,7 @@ module Yelp::V1::Review::Request
           :latitude => 37.78022,
           :longitude => -122.399797,
           :radius => 2,
-          :term => 'yelp',
-          :yws_id => Credentials.yws_id)
+          :term => 'yelp')
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -36,8 +35,7 @@ module Yelp::V1::Review::Request
           :city => 'San Francisco',
           :state => 'CA',
           :radius => 2,
-          :term => 'cream puffs',
-          :yws_id => Credentials.yws_id)
+          :term => 'cream puffs')
         expect(client.search(request)).to be_valid_response_hash
       end
     end
@@ -49,8 +47,7 @@ module Yelp::V1::Review::Request
           :latitude => 37.78022,
           :longitude => -122.399797,
           :radius => 5,
-          :term => 'yelp',
-          :yws_id => Credentials.yws_id)
+          :term => 'yelp')
         response = client.search(request)
 
         # perform the same search focusing only on playgrounds
@@ -59,8 +56,7 @@ module Yelp::V1::Review::Request
           :longitude => -122.399797,
           :radius => 5,
           :term => 'yelp',
-          :category => 'playgrounds',
-          :yws_id => Credentials.yws_id)
+          :category => 'playgrounds')
         narrowed_response = client.search(narrowed_request)
 
         # make sure we got less for the second
@@ -95,7 +91,6 @@ module Yelp::V1::Review::Request
       params = {
         :city => 'San Francisco',
         :state => 'CA',
-        :yws_id => Credentials.yws_id,
         :category => 'donuts'
       }
       request = Location.new(params)
@@ -138,8 +133,7 @@ module Yelp::V1::Review::Request
       default_params = {
         :city => 'San Francisco',
         :state => 'CA',
-        :term => 'gordo',
-        :yws_id => Credentials.yws_id
+        :term => 'gordo'
       }
       Location.new(default_params.merge(options))
     end
