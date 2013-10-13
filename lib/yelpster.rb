@@ -1,3 +1,4 @@
+require 'yelpster/base'
 require 'yelpster/client'
 require 'yelpster/record'
 require 'yelpster/response_format'
@@ -18,3 +19,9 @@ require 'yelpster/v2/search/request/base'
 require 'yelpster/v2/search/request/geo_point'
 require 'yelpster/v2/search/request/bounding_box'
 require 'yelpster/v2/search/request/location'
+
+module Yelp
+  def self.configure(options)
+    Base.client = Client.new(options)
+  end
+end
