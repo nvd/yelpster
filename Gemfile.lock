@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yelpster (1.1.4)
+    yelpster (1.2.0)
       json (>= 1.1.1)
       oauth (>= 0.4.5)
 
