@@ -31,7 +31,7 @@ module Yelp
 
       def to_yelp_params
         params = {
-          :ywsid => yws_id
+          :ywsid => yws_id || Yelp::Base.client.yws_id
         }
 
         # if they specified anything other than a json variant, we

@@ -1,6 +1,7 @@
 ## Yelpster
 
 [![Build Status](https://travis-ci.org/nvd/yelpster.png?branch=develop)](https://travis-ci.org/nvd/yelpster)
+[![Dependency Status](https://gemnasium.com/nvd/yelpster.png)](https://gemnasium.com/nvd/yelpster)
 
 A Ruby object-oriented interface to the local business content available
 on Yelp at http://www.yelp.com.  Functionality is provided to perform
@@ -73,6 +74,19 @@ original pure JSON) can be specified on request record construction via the
 Yelp::[V1/V2]::Request ```response_format``` parameter, available in all request record
 types.
 
+### One Time Client Configuration (Recommended)
+To configure token/keys, add the following in a pre-loader file (eg: in initializers dir for Rails).
+Although currently available, support for specifying keys in request object will be deprecated in the future.
+
+```ruby
+Yelp.configure(:yws_id          => 'YOUR_YWSID',
+               :consumer_key    => 'YOUR_CONSUMER_KEY',
+               :consumer_secret => 'YOUR_CONSUMER_SECRET',
+               :token           => 'YOUR_TOKEN',
+               :token_secret    => 'YOUR_TOKEN_SECRET')
+```
+Then create a client object (or use Yelp::Base.client) and call ```search``` method with the request object.
+
 A few examples:
 
 ```ruby
@@ -86,23 +100,20 @@ A few examples:
              :city => 'San Francisco',
              :state => 'CA',
              :radius => 2,
-             :term => 'cream puffs',
-             :yws_id => 'YOUR_YWSID_HERE')
+             :term => 'cream puffs')
  response = client.search(request)
 
  # perform a location-based category search for either ice cream or donut shops in SF
  request = Location.new(
              :city => 'San Francisco',
              :state => 'CA',
-             :category => ['donuts', 'icecream'],
-             :yws_id => 'YOUR_YWSID_HERE')
+             :category => ['donuts', 'icecream'])
  response = client.search(request)
 
  # perform a neighborhood name lookup for a specific geo-location point
  request = GeoPoint.new(
              :latitude => 37.782093,
-             :longitude => -122.483230,
-             :yws_id => 'YOUR_YWSID_HERE')
+             :longitude => -122.483230)
  response = client.search(request)
 
  # -------------------------------------------------------
@@ -110,8 +121,7 @@ A few examples:
  include Yelp::V1::Phone::Request
  # perform a business review search based on a business phone number
  request = Number.new(
-             :phone_number => '4155551212',
-             :yws_id => 'YOUR_YWSID_HERE')
+             :phone_number => '4155551212')
  response = client.search(request)
 
  # -------------------------------------------------------
@@ -119,11 +129,7 @@ A few examples:
  include Yelp::V2::Business::Request
  # retrieve details of business vi yelp business id
  request = Id.new(
-             :yelp_business_id => "pjb2WMwa0AfK3L-dWimO8w",
-             :consumer_key => 'YOUR_CONSUMER_KEY',
-             :consumer_secret => 'YOUR_CONSUMER_SECRET',
-             :token => 'YOUR_TOKEN',
-             :token_secret => 'YOUR_TOKEN_SECRET')
+             :yelp_business_id => "pjb2WMwa0AfK3L-dWimO8w")
  response = client.search(request)
 
  # -------------------------------------------------------
@@ -136,43 +142,27 @@ A few examples:
              :sw_longitude => -122.500000,
              :ne_latitude => 37.788022,
              :ne_longitude => -122.399797,
-             :limit => 3,
-             :consumer_key => 'YOUR_CONSUMER_KEY',
-             :consumer_secret => 'YOUR_CONSUMER_SECRET',
-             :token => 'YOUR_TOKEN',
-             :token_secret => 'YOUR_TOKEN_SECRET')
+             :limit => 3)
  response = client.search(request)
 
  # search for businesses via lat/long geo point'
  request = GeoPoint.new(
              :term => "cream puffs",
              :latitude => 37.788022,
-             :longitude => -122.399797,
-             :consumer_key => 'YOUR_CONSUMER_KEY',
-             :consumer_secret => 'YOUR_CONSUMER_SECRET',
-             :token => 'YOUR_TOKEN',
-             :token_secret => 'YOUR_TOKEN_SECRET')
+             :longitude => -122.399797)
  response = client.search(request)
 
  # search for businesses via location (address, neighbourhood, city, state, zip, country, latitude, longitude)'
  request = Location.new(
              :term => "cream puffs",
-             :city => "San Francisco",
-             :consumer_key => 'YOUR_CONSUMER_KEY',
-             :consumer_secret => 'YOUR_CONSUMER_SECRET',
-             :token => 'YOUR_TOKEN',
-             :token_secret => 'YOUR_TOKEN_SECRET')
+             :city => "San Francisco")
  response = client.search(request)
 
  request = Location.new(
              :term => "german food",
              :address => "Hayes",
              :latitude => 37.77493,
-             :longitude => -122.419415,
-             :consumer_key => 'YOUR_CONSUMER_KEY',
-             :consumer_secret => 'YOUR_CONSUMER_SECRET',
-             :token => 'YOUR_TOKEN',
-             :token_secret => 'YOUR_TOKEN_SECRET')
+             :longitude => -122.419415)
  response = client.search(request)
 ```
 
@@ -187,5 +177,5 @@ This library is provided via the GNU LGPL license at http://www.gnu.org/licenses
 
 Copyright 2007 - 2009, Walter Korman <shaper@fatgoose.com>, http://lemurware.blogspot.com
 
-2011 – Yelp V2 Additions by Naveed Siddiqui <naveed@10eighteen.com>
+2011 – Yelp V2 Additions by Naveed Siddiqui <n@10eighteen.com>
 
