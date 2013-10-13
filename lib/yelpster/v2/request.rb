@@ -51,6 +51,23 @@ module Yelp
         access_token = OAuth::AccessToken.new(consumer, token, token_secret)
         access_token.get(url).body
       end
+
+      # For backwards compatibility
+      def consumer_key
+        @consumer_key || Yelp::Base.client.consumer_key
+      end
+
+      def consumer_secret
+        @consumer_secret || Yelp::Base.client.consumer_secret
+      end
+
+      def token
+        @token || Yelp::Base.client.token
+      end
+
+      def token_secret
+        @token_secret || Yelp::Base.client.token_secret
+      end
     end
   end
 end

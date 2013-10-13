@@ -37,16 +37,21 @@ module Yelp
     # defaulting to output to STDOUT
     attr_accessor :logger
 
+    attr_accessor :yws_id, :consumer_key, :consumer_secret, :token, :token_secret
+
     # the default user agent submitted with search requests
     DEFAULT_AGENT = 'yelp for Ruby (http://www.rubyforge.org/projects/yelp/)'
 
     # Constructs a new client that uses the supplied YWSID for submitting
     # search requests.
     #
-    def initialize
+    def initialize(attributes = {})
       @agent = DEFAULT_AGENT
       @debug = false
       @logger = nil
+      attributes.each do |attr, value|
+        self.send("#{attr}=", value)
+      end
     end
 
     # Submits the supplied search request to Yelp and returns the response in
