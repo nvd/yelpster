@@ -84,6 +84,8 @@ types.
 To configure token/keys, add the following in a pre-loader file (eg: in initializers dir for Rails).
 Although currently available, support for specifying keys in request object will be deprecated in the future.
 
+For example, you might have a 'yelp.rb' file in your 'config/initializers' directory that looks like the following:
+
 ```ruby
 Yelp.configure(:yws_id          => 'YOUR_YWSID',
                :consumer_key    => 'YOUR_CONSUMER_KEY',
@@ -188,7 +190,7 @@ Here is another example, let's say I wanted to make a call to the API in a contr
                  :radius_filter => 8047,
                  :latitude => session[:latitude],
                  :longitude => session[:longitude])
-     @response = client.search(request)
+        response = client.search(request)
 
      # rest of your code
    end
