@@ -190,7 +190,7 @@ Here is another example, let's say I wanted to make a call to the API in a contr
                  :radius_filter => 8047,
                  :latitude => session[:latitude],
                  :longitude => session[:longitude])
-        response = client.search(request)
+     response = client.search(request)
 
      # rest of your code
    end
