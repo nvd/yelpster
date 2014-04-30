@@ -11,13 +11,14 @@ module Yelp
           # the phone number of the business to search for, formatted as
           # '1112223333'.  Make sure you don't have any hyphens or parentheses.
           attr_reader :phone_number
+          attr_reader :cc
 
           def base_url
             'http://api.yelp.com/phone_search'
           end
 
           def to_yelp_params
-            super.merge(:phone => phone_number)
+            super.merge(:phone => phone_number, :cc => cc)
           end
         end
       end
