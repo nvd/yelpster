@@ -12,7 +12,9 @@ module Yelp::V2::Search::Request
     let(:location) { {
       "cross_streets"=>"21st Ave & 22nd Ave", 
       "city"=>"San Francisco", 
+      "coordinate" => {"latitude"=>37.78221, "longitude"=>-122.480624},
       "display_address"=>["2001 Clement St", "(b/t 21st Ave & 22nd Ave)", "Outer Richmond", "San Francisco, CA 94121"], 
+      "geo_accuracy" => 9,
       "neighborhoods"=>["Outer Richmond"], 
       "postal_code"=>"94121", 
       "country_code"=>"US", 
