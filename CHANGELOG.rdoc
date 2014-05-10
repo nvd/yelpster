@@ -1,3 +1,9 @@
+== YELPSTER_20141010_1_2_1
+* [Leslie Viljoen] Add cc (country_code) parameter to v1 phone search
+
+== YELPSTER_20131013_1_2_0
+* [naveed] Allow one-time client configuration
+
 == YELPSTER_20130629_1_1_4
 * [naveed] Convert Yelp to a module
 
