@@ -1,6 +1,8 @@
 == YELPSTER_20141010_1_2_1
 * [Leslie Viljoen] Add cc (country_code) parameter to v1 phone search
 
+* [naveed] Check encoding before uncompressing v1 responses
+
 == YELPSTER_20131013_1_2_0
 * [naveed] Allow one-time client configuration
 
