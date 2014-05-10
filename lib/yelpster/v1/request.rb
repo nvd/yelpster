@@ -47,8 +47,8 @@ module Yelp
       end
 
       def pull_results (url, http_params)
-        source = open(url, http_params)
-        content = (compress_response?) ? Zlib::GzipReader.new(source).read : source.read
+        response = open(url, http_params)
+        response.content_encoding.include?('gzip') ? Zlib::GzipReader.new(response).read : response.read
       end
     end
   end
