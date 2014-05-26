@@ -68,7 +68,6 @@ module Yelp
       # submit the http request for the results
       # http_request_params not used in v2 as OAuth (implemented in v2) only takes response params
       http_params = { 'User-Agent' => @agent }
-      http_params['Accept-Encoding'] = 'gzip,deflate' if request.compress_response?
       http_params[:proxy] = nil
       content = request.pull_results(url, http_params)
 

@@ -1,4 +1,7 @@
-== YELPSTER_20141010_1_2_1
+=== YELPSTER_20141010_1_3_0
+* [naveed] Deprecate and remove compress_response param from requests (Yelp has stopped compressing v1 responses)
+
+= YELPSTER_20141010_1_2_1
 * [Leslie Viljoen] Add cc (country_code) parameter to v1 phone search
 
 * [naveed] Check encoding before uncompressing v1 responses

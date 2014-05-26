@@ -4,10 +4,6 @@ require 'oauth'
 module Yelp
   module V2
     class Request < Yelp::Record
-      # specifies whether the response content should be transmitted
-      # over the wire compressed, defaulting to true.
-      attr_reader :compress_response
-
       # one of the Yelp::ResponseFormat format specifiers detailing the
       # desired format of the search results, defaulting to
       # Yelp::ResponseFormat::JSON_TO_RUBY.
@@ -21,11 +17,8 @@ module Yelp
       attr_reader :token
       attr_reader :token_secret
 
-      alias :compress_response? :compress_response
-
-      def initialize (params)
+      def initialize(params)
         default_params = {
-          :compress_response => true,
           :response_format => Yelp::ResponseFormat::JSON_TO_RUBY
         }
         super(default_params.merge(params))
@@ -46,7 +39,7 @@ module Yelp
         params
       end
 
-      def pull_results (url, http_params)
+      def pull_results(url, _)
         consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://api.yelp.com"})
         access_token = OAuth::AccessToken.new(consumer, token, token_secret)
         access_token.get(url).body
