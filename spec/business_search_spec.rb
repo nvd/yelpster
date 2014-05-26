@@ -10,15 +10,15 @@ module Yelp::V2::Search::Request
     let(:latitude)  { 37.7821868 }
     let(:longitude) { -122.4841149 }
     let(:location) { {
-      "cross_streets"=>"21st Ave & 22nd Ave", 
-      "city"=>"San Francisco", 
+      "cross_streets"=>"21st Ave & 22nd Ave",
+      "city"=>"San Francisco",
       "coordinate" => {"latitude"=>37.78221, "longitude"=>-122.480624},
-      "display_address"=>["2001 Clement St", "(b/t 21st Ave & 22nd Ave)", "Outer Richmond", "San Francisco, CA 94121"], 
       "geo_accuracy" => 9,
-      "neighborhoods"=>["Outer Richmond"], 
-      "postal_code"=>"94121", 
-      "country_code"=>"US", 
-      "address"=>["2001 Clement St"], 
+      "display_address" => ["2001 Clement St", "Outer Richmond", "San Francisco, CA 94121"],
+      "neighborhoods"=>["Outer Richmond"],
+      "postal_code"=>"94121",
+      "country_code"=>"US",
+      "address"=>["2001 Clement St"],
       "state_code"=>"CA"
     } }
 
@@ -40,7 +40,7 @@ module Yelp::V2::Search::Request
                                :longitude       => longitude)
         response = client.search(request)
         expect(response).to be_valid_response_hash
-        expect(response['businesses'].first['location']).to eq(location)
+        expect(response['businesses'].first['location']).to include(location)
       end
     end
 
