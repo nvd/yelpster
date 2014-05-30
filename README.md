@@ -188,8 +188,8 @@ Here is another example, let's say I wanted to make a call to the API in a contr
                  :category_filter => 'food,restaurants',
                  :limit => 20,
                  :radius_filter => 8047,
-                 :latitude => session[:latitude],
-                 :longitude => session[:longitude])
+                 :latitude => params[:latitude],
+                 :longitude => params[:longitude])
      response = client.search(request)
 
      # rest of your code
@@ -197,7 +197,10 @@ Here is another example, let's say I wanted to make a call to the API in a contr
  end
  ```
 
-You can check out all the parameters you can pass in the Yelp API Documentation. For V1 - http://www.yelp.com/developers/documentation/search_api. For V2 - http://www.yelp.com/developers/documentation/v2/search_api
+You can check out all the parameters you can pass in the Yelp API Documentation.
+
+For V1 - http://www.yelp.com/developers/documentation/search_api.
+For V2 - http://www.yelp.com/developers/documentation/v2/search_api
 
 If you want to convert some addresses to latitude/longitude, or vice
 versa, for testing or what have you -- try http://stevemorse.org/jcal/latlon.php.
