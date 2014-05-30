@@ -29,22 +29,28 @@ retrieved via their API, documented at http://www.yelp.com/developers/getting_st
 For tests to execute successfully you must have the YWSID (for v1) or YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, YELP_TOKEN and YELP_TOKEN_SECRET(for v2) set in your environment via (shell-dependent, bash example provided):
 
 ```console
- % export YWSID='YOUR_ID_HERE'
+ export YWSID='YOUR_ID_HERE'
 ```
 
 or
 
 ```console
- % export YELP_CONSUMER_KEY='YOUR_CONSUMER_KEY_HERE'
- % export YELP_CONSUMER_SECRET='YOUR_CONSUMER_SECRET_HERE'
- % export YELP_TOKEN='YOUR_TOKEN_HERE'
- % export YELP_TOKEN_SECRET='YOUR_TOKEN_SECRET_HERE'
+ export YELP_CONSUMER_KEY='YOUR_CONSUMER_KEY_HERE'
+ export YELP_CONSUMER_SECRET='YOUR_CONSUMER_SECRET_HERE'
+ export YELP_TOKEN='YOUR_TOKEN_HERE'
+ export YELP_TOKEN_SECRET='YOUR_TOKEN_SECRET_HERE'
 ```
 
 ## Installing
 
 ```console
- % gem install yelpster
+ gem install yelpster
+```
+
+and in your gemfile:
+
+```ruby
+ gem 'yelpster'
 ```
 
 ## Usage
@@ -77,6 +83,8 @@ types.
 ### One Time Client Configuration (Recommended)
 To configure token/keys, add the following in a pre-loader file (eg: in initializers dir for Rails).
 Although currently available, support for specifying keys in request object will be deprecated in the future.
+
+For example, you might have a 'yelp.rb' file in your 'config/initializers' directory that looks like the following:
 
 ```ruby
 Yelp.configure(:yws_id          => 'YOUR_YWSID',
@@ -165,6 +173,31 @@ A few examples:
              :longitude => -122.419415)
  response = client.search(request)
 ```
+
+Here is another example, let's say I wanted to make a call to the API in a controller action:
+
+```ruby
+ class FoodsController < ApplicationController
+   include Yelp::V2::Search::Request
+
+   def search
+     client = Yelp::Client.new
+
+     request = GeoPoint.new(
+                 :term => 'thai',
+                 :category_filter => 'food,restaurants',
+                 :limit => 20,
+                 :radius_filter => 8047,
+                 :latitude => session[:latitude],
+                 :longitude => session[:longitude])
+     response = client.search(request)
+
+     # rest of your code
+   end
+ end
+ ```
+
+You can check out all the parameters you can pass in the Yelp API Documentation. For V1 - http://www.yelp.com/developers/documentation/search_api. For V2 - http://www.yelp.com/developers/documentation/v2/search_api
 
 If you want to convert some addresses to latitude/longitude, or vice
 versa, for testing or what have you -- try http://stevemorse.org/jcal/latlon.php.
