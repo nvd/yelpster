@@ -4,3 +4,4 @@ bin
 .rspec
 pkg
 rdoc
+Gemfile.lock
