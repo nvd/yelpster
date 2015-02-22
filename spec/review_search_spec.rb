@@ -74,13 +74,13 @@ module Yelp::V1::Review::Request
       expect(client.search(request)).to be_valid_response_hash
     end
 
-    pending 'returns valid pickle' do
+    skip 'returns valid pickle' do
       request = basic_request(:response_format => Yelp::ResponseFormat::PICKLE)
       response = client.search(request)
       # TODO: validation
     end
 
-    pending 'returns valid php' do
+    skip 'returns valid php' do
       request = basic_request(:response_format => Yelp::ResponseFormat::PHP)
       response = client.search(request)
       # TODO: validation
@@ -125,7 +125,7 @@ module Yelp::V1::Review::Request
         expect(has_donut || has_icecream).to_not be_nil
       end
 
-      expect((donut_count > 0) && (icecream_count > 0)).to be_true
+      expect((donut_count > 0) && (icecream_count > 0)).to be_truthy
     end
 
     private

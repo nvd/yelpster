@@ -40,7 +40,7 @@ module Yelp
     attr_accessor :yws_id, :consumer_key, :consumer_secret, :token, :token_secret
 
     # the default user agent submitted with search requests
-    DEFAULT_AGENT = 'yelp for Ruby (http://www.rubyforge.org/projects/yelp/)'
+    DEFAULT_AGENT = 'yelp for Ruby (http://www.rubygems.org/gems/yelpster/)'
 
     # Constructs a new client that uses the supplied YWSID for submitting
     # search requests.

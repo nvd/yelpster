@@ -10,16 +10,16 @@ module Yelp::V2::Search::Request
     let(:latitude)  { 37.7821868 }
     let(:longitude) { -122.4841149 }
     let(:location) { {
-      "cross_streets"=>"21st Ave & 22nd Ave",
-      "city"=>"San Francisco",
-      "coordinate" => {"latitude"=>37.78221, "longitude"=>-122.480624},
-      "geo_accuracy" => 9,
-      "display_address" => ["2001 Clement St", "Outer Richmond", "San Francisco, CA 94121"],
-      "neighborhoods"=>["Outer Richmond"],
-      "postal_code"=>"94121",
-      "country_code"=>"US",
-      "address"=>["2001 Clement St"],
-      "state_code"=>"CA"
+      "address" => ["211 23rd Ave"],
+      "city" => "San Francisco",
+      "coordinate" => {"latitude"=>37.7836279571056, "longitude"=>-122.482908368111},
+      "country_code" => "US",
+      "cross_streets" => "California St & Clement St",
+      "display_address" => ["211 23rd Ave", "Outer Richmond", "San Francisco, CA 94121"],
+      "geo_accuracy" => 8.0,
+      "neighborhoods" => ["Outer Richmond"],
+      "postal_code" => "94121",
+      "state_code" => "CA"
     } }
 
     describe 'by Bounding Box' do
