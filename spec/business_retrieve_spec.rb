@@ -18,7 +18,7 @@ module Yelp::V2::Business::Request
     end
 
     it 'returns a valid business hash' do
-      subject.should be_valid_business_hash
+      expect(subject).to be_valid_business_hash
     end
 
     it 'returns the correct business' do

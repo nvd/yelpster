@@ -1,5 +1,4 @@
 ENV["RAILS_ENV"] ||= 'test'
-require 'rspec/autorun'
 require 'yelpster'
 require 'json'
 
